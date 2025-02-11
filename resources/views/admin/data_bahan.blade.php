@@ -1,7 +1,7 @@
 @extends('layout.master1')
 
 @section('title')
-    SI PIRANG | Data Alat
+    SI PIRANG | Data Bahan
 @stop
 
 @section('css')
@@ -16,7 +16,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Data Alat</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Data Bahan</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -52,7 +52,7 @@
                                         <div class="text-right  mb-3">
                                             <a href="{{ url('/DataFasilitas/TambahFasilitas') }}" type="button"
                                                 class="btn btn-outline-primary btn-rounded"><i class="icon-plus"></i> Tambah
-                                                Alat</a>
+                                                Bahan</a>
                                         </div>
                                     </div>
 
@@ -62,10 +62,9 @@
                                             <thead class="bg-primary text-white">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama Alat</th>
+                                                    <th>Nama Bahan</th>
                                                     <th>Satuan</th>
                                                     <th>Jumlah</th>
-                                                    <th>Foto</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -77,26 +76,26 @@
                                                 {{-- @if (empty($data)) --}}
                                                     <tr>
                                                         <td colspan="10" class="text-center"><strong>Tidak ada
-                                                                data alat</strong></td>
+                                                                data bahan</strong></td>
                                                     </tr>
-                                                {{-- @endif
-                                                @foreach ($data as $item) --}}
-                                                    <tr>
-                                                        {{-- <td>{{ $no++ }}</td>
+                                                {{-- @endif --}}
+                                                {{-- @foreach ($data as $item) --}}
+                                                    {{-- <tr>
+                                                        <td>{{ $no++ }}</td>
                                                         <td>{{ $item['nama'] }}</td>
                                                         <td><img src="{{ $item['foto'] }}" width="100"></td>
                                                         <td>
                                                             {{-- Jumlah:
                                                             <br>
                                                             di Pinjam: <br> --}}
-                                                            {{-- Tersedia: {{ $item['jumlah'] }} --}}
-                                                        {{-- </td> --}} 
-                                                        {{-- <td>
+                                                            {{-- Tersedia: {{ $item['jumlah'] }}
+                                                        </td>
+                                                        <td>
                                                             <a href="{{ url('/DataFasilitas/UbahFasilitas/' . $item['id']) }}"
                                                                 class="btn btn-rounded btn-warning text-white">Ubah</a>
                                                         </td>
                                                     </tr>
-                                                 {{-- @endforeach --}}
+                                                @endforeach  --}}
                                             </tbody>
                                         </table>
                                     </div>
