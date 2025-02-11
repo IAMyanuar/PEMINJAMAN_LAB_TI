@@ -14,6 +14,8 @@ use App\Http\Controllers\webAuthController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+use function PHPUnit\Framework\returnSelf;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,14 @@ Route::middleware('checkToken')->group(function () {
     Route::get('/riwayat', [RiwayatController::class, 'riwayatPeminjaman'])->name('riwayatku_search');
     // Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
 
+
+    Route::get('/admin/DataAlat', function(){
+        return view('admin.data_alat');
+    });
+
+    Route::get('/admin/DataBahan', function(){
+        return view('admin.data_bahan');
+    });
 
 
     Route::post('/logout', [webAuthController::class, 'Logout'])->name('logout');
