@@ -73,7 +73,9 @@ Route::middleware('checkToken')->group(function () {
     Route::get('/riwayat', [RiwayatController::class, 'riwayatPeminjaman'])->name('riwayatku_search');
     // Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
 
-
+    Route::get('/PengajuanAlatDanBahan', function(){
+        return view('user.pengajuan_alat_dan_bahan');
+    });
 
     Route::post('/logout', [webAuthController::class, 'Logout'])->name('logout');
 });

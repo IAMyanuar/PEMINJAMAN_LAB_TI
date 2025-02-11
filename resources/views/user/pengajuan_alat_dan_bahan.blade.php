@@ -1,7 +1,7 @@
 @extends('layout.master2')
 
 @section('title')
-    PENGAJUAN LABORATORIUM
+    PENGAJUAN ALAT DAN BAHAN
 @stop
 
 @section('css')
@@ -16,7 +16,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Pengajuan Peminjaman Laboratorium</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Pengajuan Peminjaman Alat dan Bahan</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="col-5 align-self-center">
-                    <di v class="customize-input float-right">
+                    <div class="customize-input float-right">
                         <p><span class="form-control bg-white border-0 custom-shadow custom-radius"id="tanggalwaktu"></span>
                         </p>
                     </div>
@@ -55,8 +55,8 @@
                                 <div class="card-body">
                                     <div class="form-actions">
                                         <div class="text-right mb-3">
-                                            <a class="btn btn-success btn-rounded" href="{{ url('/AjukanPeminjaman') }}">Ajukan
-                                                Peminjaman (+)</a>
+                                            <a class="btn btn-success btn-rounded" href="{{ url('/pengajuan-alat-dan-bahan') }}">Ajukan
+                                                Alat dan Bahan (+)</a>
                                         </div>
                                     </div>
 
@@ -65,44 +65,42 @@
                                         <table class="table">
                                             <thead class="bg-primary text-white">
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Nama Peminjam</th>
-                                                    <th>Nama Lembaga</th>
-                                                    <th>Nama Kegiatan</th>
-                                                    <th>Ruangan</th>
-                                                    <th>Fasilitas</th>
-                                                    <th>Waktu Mulai</th>
-                                                    <th>Waktu Selesai</th>
-                                                    <th>Status</th>
-                                                    <th>Aksi</th>
+                                                    <th>Identitas Peminjam</th>
+                                                    <th>Alat</th>
+                                                    <th>Bahan</th>
+                                                    <th>Waktu Pinjam</th>
+                                                    <th>Waktu Kembali</th>
+                                                    <th>PIC - Dosen Pengampu</th>
+                                                    <th>Verifikasi Teknisi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if (empty($datapeminjaman))
+                                                {{-- @if (empty($datapeminjaman)) --}}
                                                     <tr>
                                                         <td colspan="10" class="text-center"><strong>
-                                                                Anda Belum Mengajukan Ruangan Peminjaman Ruangan
+                                                                Anda Belum Mengajukan Alat dan Bahan 
                                                             </strong></td>
                                                     </tr>
-                                                @else
+                                                {{-- @else --}}
                                                     @php
                                                         $no = 1;
                                                     @endphp
-                                                    @foreach ($datapeminjaman[0] as $item)
+                                                    {{-- @foreach ($datapeminjaman[0] as $item) --}}
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
-                                                            <td>{{ $item['nama_user'] }}</td>
-                                                            <td>{{ $item['nama_lembaga'] }}</td>
-                                                            <td>{{ $item['kegiatan'] }}</td>
-                                                            <td>{{ $item['nama_ruangan'] }}</td>
-                                                            <td>
+                                                            {{-- <td>{{ }}</td>
+                                                            <td>{{  }}</td>
+                                                            <td>{{  }}</td>
+                                                            <td>{{  }}</td>
+                                                            <td>{{  }}</td> --}}
+                                                            {{-- <td>
                                                                 @foreach ($datapeminjaman[1] as $itemfasilitas)
                                                                     @if ($itemfasilitas['id_peminjaman']==$item['id'])
                                                                     - {{ $itemfasilitas['nama'] }}: {{ $itemfasilitas['jumlah'] }} <br>
                                                                     @endif
                                                                 @endforeach
-                                                            </td>
-                                                            <td class="text-center">
+                                                            </td> --}}
+                                                            {{-- <td class="text-center">
                                                                 {{ date('d-m-Y', strtotime($item['tgl_mulai'])) }}
                                                                 <br>jam:{{ date('H:i', strtotime($item['jam_mulai'])) }}
                                                             </td>
@@ -172,7 +170,7 @@
                                                                     data-toggle="tooltip" data-placement="left"
                                                                     title="" data-original-title="Bukti Disetujui"><i
                                                                         class="fas fa-clipboard-check"></i></button> --}}
-                                                                @endif
+                                                                {{-- @endif
 
                                                                 @if ($item['status'] == 'di prosess')
                                                                     <a class="btn btn-info btn-rounded"
@@ -225,7 +223,7 @@
                                                             </td>
                                                         </tr>
                                                     @endforeach
-                                                @endif
+                                                @endif  --}}
 
                                             </tbody>
                                         </table>
