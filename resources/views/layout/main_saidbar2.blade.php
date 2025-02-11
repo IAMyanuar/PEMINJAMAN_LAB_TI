@@ -7,6 +7,7 @@
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/dashboard') }}" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard</span></a></li>
                 {{-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/kalender" aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span class="hide-menu">Kalender</span></a></li> --}}
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/PengajuanPeminjaman') }}"aria-expanded="false"><i class="far fa-paper-plane"></i><span class="hide-menu">Pengajuan Peminjaman</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/pengajuan-alat-dan-bahan') }}"aria-expanded="false"><i class="far fa-paper-plane"></i><span class="hide-menu">Pengajuan Alat dan Bahan</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('/riwayat') }}"aria-expanded="false"><i class="icon-notebook"></i><span class="hide-menu">Riwayat Peminjaman</span></a></li>
                 <form action="{{ route('logout') }}" method="post">
                 @csrf
