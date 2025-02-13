@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController\AlatController;
+use App\Http\Controllers\AdminController\BahanController;
 use App\Http\Controllers\AdminController\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AdminController\KalenderController;
 use App\Http\Controllers\AdminController\PeminjamanController as AdminPeminjamanController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\UserController\DashboardController;
 use App\Http\Controllers\UserController\PeminjamanController;
 use App\Http\Controllers\UserController\RiwayatController;
 use App\Http\Controllers\webAuthController;
+use App\Models\Bahan;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -73,16 +76,14 @@ Route::middleware('checkToken')->group(function () {
     Route::post('/EditPeminjaman/{id}', [PeminjamanController::class, 'update'])->name('ubah_pengajuan');
     Route::patch('/PengajuanPeminjaman/{id}', [PeminjamanController::class, 'updateStatus'])->name('ulasan');
     Route::get('/riwayat', [RiwayatController::class, 'riwayatPeminjaman'])->name('riwayatku_search');
-    // Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
+    Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
 
+    //baru
+    Route::get('/admin/DataAlat',[AlatController::class,'index']);
+    Route::delete('/admin/DataAlat/HapusAlat/{id}',[AlatController::class,'destroy'])->name('hapus_alat');
 
-    Route::get('/admin/DataAlat', function(){
-        return view('admin.data_alat');
-    });
-
-    Route::get('/admin/DataBahan', function(){
-        return view('admin.data_bahan');
-    });
+    Route::get('/admin/DataBahan', [BahanController::class,'index']);
+    Route::delete('/admin/DataBahan/HapusBahan/{id}',[BahanController::class,'destroy'])->name('hapus_bahan');;
 
     Route::get('/admin/DataAlat/TambahAlat', function () {
         return view('admin.tambah_alat');

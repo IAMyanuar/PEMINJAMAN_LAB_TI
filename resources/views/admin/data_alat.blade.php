@@ -74,29 +74,36 @@
                                                 @php
                                                     $no = 1;
                                                 @endphp
-                                                {{-- @if (empty($data)) --}}
+                                                @if (empty($data))
                                                     <tr>
                                                         <td colspan="10" class="text-center"><strong>Tidak ada
                                                                 data alat</strong></td>
                                                     </tr>
-                                                {{-- @endif
-                                                @foreach ($data as $item) --}}
+                                                @endif
+                                                @foreach ($data as $item)
                                                     <tr>
-                                                        {{-- <td>{{ $no++ }}</td>
+                                                        <td>{{ $no++ }}</td>
                                                         <td>{{ $item['nama'] }}</td>
+                                                        <td>{{ $item['satuan'] }}</td>
+                                                        <td>
+                                                            Jumlah: {{ $item['jumlah'] }}
+                                                        </td>
                                                         <td><img src="{{ $item['foto'] }}" width="100"></td>
                                                         <td>
-                                                            {{-- Jumlah:
-                                                            <br>
-                                                            di Pinjam: <br> --}}
-                                                            {{-- Tersedia: {{ $item['jumlah'] }} --}}
-                                                        {{-- </td> --}} 
-                                                        {{-- <td>
-                                                            <a href="{{ url('/DataFasilitas/UbahFasilitas/' . $item['id']) }}"
-                                                                class="btn btn-rounded btn-warning text-white">Ubah</a>
+                                                            <a href="{{ url('/admin/DataAlat/UbahAlat/' . $item['id']) }}"
+                                                                class="btn btn-rounded btn-warning text-white" data-toggle="tooltip" data-placement="left"
+                                                                title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
+                                                            <form
+                                                                action="{{ route('hapus_alat', $item['id']) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button href="{{ url('/admin/DataAlat/HapusAlat/' . $item['id']) }}"
+                                                                class="btn btn-rounded btn-danger text-white" data-toggle="tooltip" data-placement="right"
+                                                                title="" data-original-title="hapus"><i class="fas fa-trash"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
-                                                 {{-- @endforeach --}}
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
