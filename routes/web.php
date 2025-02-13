@@ -84,6 +84,14 @@ Route::middleware('checkToken')->group(function () {
         return view('admin.data_bahan');
     });
 
+    Route::get('/admin/DataAlat/TambahAlat', function () {
+        return view('admin.tambah_alat');
+    })->name('tambah_alat');
+
+    Route::get('/admin/DataBahan/TambahBahan', function () {
+        return view('admin.tambah_bahan');
+    })->name('tambah_bahan');
+
 
     Route::post('/logout', [webAuthController::class, 'Logout'])->name('logout');
 });

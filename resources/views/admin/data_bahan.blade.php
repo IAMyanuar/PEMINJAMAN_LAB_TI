@@ -50,7 +50,7 @@
                                 <div class="card-body">
                                     <div class="form-actions">
                                         <div class="text-right  mb-3">
-                                            <a href="{{ url('/DataFasilitas/TambahFasilitas') }}" type="button"
+                                            <a href="{{ route('tambah_bahan') }}" type="button"
                                                 class="btn btn-outline-primary btn-rounded"><i class="icon-plus"></i> Tambah
                                                 Bahan</a>
                                         </div>
