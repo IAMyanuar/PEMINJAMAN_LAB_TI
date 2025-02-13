@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\API\AlatController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\authController;
+use App\Http\Controllers\API\BahanController;
 use App\Http\Controllers\API\FasilitasController;
+use App\Http\Controllers\API\PeminjamanAlatDanBahanController;
 use App\Http\Controllers\API\RuanganController;
 use App\Http\Controllers\API\PeminjamanController;
 use App\Models\Peminjaman;
@@ -57,6 +60,17 @@ Route::post('tambahfasilitas',[FasilitasController::class, 'store']);
 Route::get('fasilitas/{id}',[FasilitasController::class,'show']);
 Route::post('fasilitas/{id}',[FasilitasController::class,'update']);
 Route::post('riwayat/download',[PeminjamanController::class, 'downloadPeminjamanByMonth']);
+//penambahan fitur admin
+Route::get('alat',[AlatController::class, 'index']); //menampilkan data alat
+Route::post('alat',[AlatController::class, 'store'])->middleware('auth:sanctum','ablity:access-admin');//tambah alat
+Route::get('alat/{id}',[AlatController::class, 'show']); //detail alat
+Route::post('alat-update/{id}',[AlatController::class, 'update'])->middleware('auth:sanctum','ablity:access-admin'); //ubah alat
+Route::post('alat-delete/{id}',[AlatController::class, 'destroy'])->middleware('auth:sanctum','ablity:access-admin'); //hapus alat
+Route::get('bahan',[BahanController::class, 'index']);
+Route::post('bahan',[BahanController::class, 'store'])->middleware('auth:sanctum','ablity:access-admin');//tambah bahan
+Route::get('bahan/{id}',[BahanController::class, 'show']); //detail alat
+Route::post('bahan-update/{id}',[BahanController::class, 'update'])->middleware('auth:sanctum','ablity:access-admin'); //ubah bahan
+Route::post('bahan-delete/{id}',[BahanController::class, 'destroy'])->middleware('auth:sanctum','ablity:access-admin'); //hapus bahan
 
 //user
 Route::post('peminjaman',[PeminjamanController::class, 'storepeminjaman']);//tambah peminjaman

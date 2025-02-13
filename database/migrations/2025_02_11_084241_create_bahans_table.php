@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama',45);
             $table->string('satuan',45);
             $table->integer('jumlah');
+            $table->timestamps();
         });
     }
 
