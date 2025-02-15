@@ -72,6 +72,14 @@ Route::get('bahan/{id}',[BahanController::class, 'show']); //detail alat
 Route::post('bahan-update/{id}',[BahanController::class, 'update'])->middleware('auth:sanctum','ablity:access-admin'); //ubah bahan
 Route::post('bahan-delete/{id}',[BahanController::class, 'destroy'])->middleware('auth:sanctum','ablity:access-admin'); //hapus bahan
 
+Route::get('peminjaman-alat-bahan',[PeminjamanAlatDanBahanController::class, 'index']);// menampikan peminjaman alat dan bahan
+Route::get('peminjaman-alat-bahan/inprogress',[PeminjamanAlatDanBahanController::class, 'proses']); //tampil data yang diproses
+Route::get('peminjaman-alat-bahan/{id}',[PeminjamanAlatDanBahanController::class, 'detail']);  //detil
+Route::post('peminjaman-alat-bahan/update-status/{id}',[PeminjamanAlatDanBahanController::class, 'ubahstatus'])->middleware('auth:sanctum','ablity:access-admin');
+Route::get('peminjaman-alat-bahan/riwayat',[PeminjamanAlatDanBahanController::class, 'riwayatPmjAlatBahan']);
+Route::get('peminjaman-alat-bahan/user/{id}',[PeminjamanAlatDanBahanController::class, 'PmjAlatBahanByIdUser']);
+
+
 //user
 Route::post('peminjaman',[PeminjamanController::class, 'storepeminjaman']);//tambah peminjaman
 Route::get('peminjamanbyuser/{id}',[PeminjamanController::class,'peminjamanByUser'])->middleware('auth:sanctum','ablity:access-peminjam');//menampilkan data berdasarkan id user

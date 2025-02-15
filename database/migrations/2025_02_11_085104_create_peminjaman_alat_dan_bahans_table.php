@@ -13,16 +13,13 @@ return new class extends Migration
     {
         Schema::create('peminjaman_alat_dan_bahans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kelas',25);
             $table->dateTime('tgl_pinjam')->require();
             $table->dateTime('tgl_selesai')->require();
-            $table->string('pic');
+            $table->string('pic',75);
             $table->enum('status',['terkirim','ditolak','di prosess','selesai'])->default('terkirim');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('id_alat');
-            $table->foreign('id_alat')->references('id')->on('alats');
-            $table->unsignedInteger('id_bahan');
-            $table->foreign('id_bahan')->references('id')->on('bahans');
             $table->timestamps();
         });
     }

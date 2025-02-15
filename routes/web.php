@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController\PeminjamanController as AdminPeminjaman
 use App\Http\Controllers\AdminController\RiwayatController as AdminRiwayatController;
 use App\Http\Controllers\AdminController\RuanganController as AdminRuanganController;
 use App\Http\Controllers\AdminController\FasilitasController as AdminFasilitasController;
+use App\Http\Controllers\AdminController\PeminjamanAlatDanBahanController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\UserController\DashboardController;
 use App\Http\Controllers\UserController\PeminjamanController;
@@ -79,6 +80,10 @@ Route::middleware('checkToken')->group(function () {
     Route::get('/admin/DataBahan/EditBahan/{id}', [BahanController::class, 'edit']);
     Route::put('/admin/DataBahan/EditBahan/{id}', [BahanController::class, 'update']);
     Route::delete('/admin/DataBahan/HapusBahan/{id}',[BahanController::class,'destroy'])->name('hapus_bahan');
+
+    Route::get('/admin/accpeminjamanAlat&Bahan', [PeminjamanAlatDanBahanController::class,'index']);
+    Route::get('/admin/accpeminjamanAlat&Bahan/{id}', [PeminjamanAlatDanBahanController::class,'detilPeminjamanAlatBahan']);
+    Route::post('/admin/accpeminjamanAlat&Bahan/update-status/{id}', [PeminjamanAlatDanBahanController::class,'ubahstatus'])->name('ubah-status');
 
 
     //user
