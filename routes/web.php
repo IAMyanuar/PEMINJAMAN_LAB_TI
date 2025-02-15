@@ -65,6 +65,22 @@ Route::middleware('checkToken')->group(function () {
     Route::get('/admin/riwayat', [AdminRiwayatController::class, 'riwayat'])->name('riwayat_search');
     Route::get('/admin/kalender', [KalenderController::class, 'index']);
     Route::post('/admin/riwayat', [AdminRiwayatController::class, 'unduhRiwayat'])->name('download_riwayat');
+    //baru
+    Route::get('/admin/DataAlat',[AlatController::class,'index']);
+    Route::get('/admin/DataAlat/TambahAlat',[AlatController::class,'create']);
+    Route::post('/admin/DataAlat/TambahAlat',[AlatController::class,'store'])->name('tambah_alat');
+    Route::get('/admin/DataAlat/EditAlat/{id}', [AlatController::class, 'edit']);
+    Route::put('/admin/DataAlat/EditAlat/{id}', [AlatController::class, 'update']);
+    Route::delete('/admin/DataAlat/HapusAlat/{id}',[AlatController::class,'destroy'])->name('hapus_alat');
+
+    Route::get('/admin/DataBahan', [BahanController::class,'index']);
+    Route::get('/admin/DataBahan/TambahBahan', [BahanController::class,'create']);
+    Route::post('/admin/DataBahan/TambahBahan', [BahanController::class,'store'])->name('tambah_bahan');
+    Route::get('/admin/DataBahan/EditBahan/{id}', [BahanController::class, 'edit']);
+    Route::put('/admin/DataBahan/EditBahan/{id}', [BahanController::class, 'update']);
+    Route::delete('/admin/DataBahan/HapusBahan/{id}',[BahanController::class,'destroy'])->name('hapus_bahan');
+
+
     //user
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/PengajuanPeminjaman', [PeminjamanController::class, 'peminjamanku']);
@@ -77,21 +93,6 @@ Route::middleware('checkToken')->group(function () {
     Route::patch('/PengajuanPeminjaman/{id}', [PeminjamanController::class, 'updateStatus'])->name('ulasan');
     Route::get('/riwayat', [RiwayatController::class, 'riwayatPeminjaman'])->name('riwayatku_search');
     Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
-
-    //baru
-    Route::get('/admin/DataAlat',[AlatController::class,'index']);
-    Route::delete('/admin/DataAlat/HapusAlat/{id}',[AlatController::class,'destroy'])->name('hapus_alat');
-
-    Route::get('/admin/DataBahan', [BahanController::class,'index']);
-    Route::delete('/admin/DataBahan/HapusBahan/{id}',[BahanController::class,'destroy'])->name('hapus_bahan');;
-
-    Route::get('/admin/DataAlat/TambahAlat', function () {
-        return view('admin.tambah_alat');
-    })->name('tambah_alat');
-
-    Route::get('/admin/DataBahan/TambahBahan', function () {
-        return view('admin.tambah_bahan');
-    })->name('tambah_bahan');
 
 
     Route::post('/logout', [webAuthController::class, 'Logout'])->name('logout');

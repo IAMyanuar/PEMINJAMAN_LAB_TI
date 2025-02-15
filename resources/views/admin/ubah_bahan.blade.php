@@ -1,7 +1,7 @@
 @extends('layout.master1')
 
 @section('title')
-    SI PIRANG | Tambah Bahan
+    SI PIRANG | Ubah Bahan
 @stop
 
 @section('css')
@@ -16,7 +16,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Tambah Bahan</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Ubah Bahan</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -37,37 +37,27 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <strong>Maaf!</strong> Terdapat kesalahan dengan inputan Anda.<br><br>
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
                                     @if (session()->has('BahanIsExist'))
                                     <div class="alert alert-danger">
                                         <strong>{{ session('BahanIsExist') }}</strong>
                                     </div>
-                                @endif
-                                    <form method="post" action="{{ route('tambah_bahan') }}"
-                                        enctype="multipart/form-data">
+                                    @endif
+                                    <form method="post" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
                                         <div class="form-group">
                                             <label>Nama Bahan</label>
-                                            <input type="text" class="form-control" name="nama" required>
+                                            <input type="text" class="form-control" name="nama" value="{{  $data['nama'] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Satuan</label>
-                                            <input type="text" class="form-control" name="satuan" required>
+                                            <input type="text" class="form-control" name="satuan" value="{{  $data['satuan'] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Jumlah</label>
-                                            <input type="number" class="form-control" name="jumlah" pattern="[0-9]" required>
+                                            <label>Jumlah</label><br>
+                                            <input type="number" class="form-control" name="jumlah" pattern="[0-9]" value="{{  $data['jumlah'] }}" required>
                                         </div>
-                                        <button class="btn-primary btn" type="submit">Simpan</button>
+                                        <button class="btn-primary btn" >Simpan</button>
                                     </form>
                                 </div>
                             </div>

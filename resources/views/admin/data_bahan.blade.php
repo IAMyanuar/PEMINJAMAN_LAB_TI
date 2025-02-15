@@ -50,7 +50,7 @@
                                 <div class="card-body">
                                     <div class="form-actions">
                                         <div class="text-right  mb-3">
-                                            <a href="{{ route('tambah_bahan') }}" type="button"
+                                            <a href="{{ url('/admin/DataBahan/TambahBahan')}}" type="button"
                                                 class="btn btn-outline-primary btn-rounded"><i class="icon-plus"></i> Tambah
                                                 Bahan</a>
                                         </div>
@@ -88,11 +88,11 @@
                                                             Jumlah: {{ $item['jumlah'] }}
                                                         </td>
                                                         <td>
-                                                            <a href="{{ url('/admin/DataBahan/UbahBahan/' . $item['id']) }}"
+                                                            <a href="{{ url('/admin/DataBahan/EditBahan/' . $item['id']) }}"
                                                             class="btn btn-rounded btn-warning text-white" data-toggle="tooltip" data-placement="right"
                                                             title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
                                                             <form
-                                                                action="{{ route('hapus_bahan', $item['id']) }}" method="POST">
+                                                                action="{{ route('hapus_bahan', $item['id']) }}" method="POST" onsubmit="return confirmDelete('{{ $item['nama'] }}');">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button href="{{ url('/admin/DataBahan/HapusBahan/' . $item['id']) }}"
@@ -105,4 +105,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <script>
+                                        function confirmDelete(namaBahan) {
+                                            return confirm("Apakah Anda yakin ingin menghapus bahan '" + namaBahan + "'?");
+                                        }
+                                    </script>
                                 @endsection

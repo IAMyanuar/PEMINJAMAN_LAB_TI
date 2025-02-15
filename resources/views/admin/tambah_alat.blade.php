@@ -57,19 +57,19 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Nama Alat</label>
-                                            <input type="text" class="form-control" name="nama">
+                                            <input type="text" class="form-control" name="nama" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Satuan</label>
-                                            <input type="text" class="form-control" name="satuan">
+                                            <input type="text" class="form-control" name="satuan" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Jumlah</label>
-                                            <input type="text" class="form-control" name="jumlah">
+                                            <input type="number" class="form-control" pattern="[0-9]" name="jumlah" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Foto</label>
-                                            <input type="file" class="form-control" name="foto" accept="image/*">
+                                            <input type="file" class="form-control" name="foto" accept="image/*" required>
                                         </div>
                                         <button class="btn-primary btn" type="submit">Simpan</button>
                                     </form>

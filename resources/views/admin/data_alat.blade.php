@@ -50,7 +50,7 @@
                                 <div class="card-body">
                                     <div class="form-actions">
                                         <div class="text-right  mb-3">
-                                            <a href="{{ route('tambah_alat') }}" type="button"
+                                            <a href="{{ url('/admin/DataAlat/TambahAlat')}}" type="button"
                                                 class="btn btn-outline-primary btn-rounded"><i class="icon-plus"></i> Tambah
                                                 Alat</a>
                                         </div>
@@ -90,11 +90,11 @@
                                                         </td>
                                                         <td><img src="{{ $item['foto'] }}" width="100"></td>
                                                         <td>
-                                                            <a href="{{ url('/admin/DataAlat/UbahAlat/' . $item['id']) }}"
+                                                            <a href="{{ url('/admin/DataAlat/EditAlat/' . $item['id']) }}"
                                                                 class="btn btn-rounded btn-warning text-white" data-toggle="tooltip" data-placement="left"
                                                                 title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
                                                             <form
-                                                                action="{{ route('hapus_alat', $item['id']) }}" method="POST">
+                                                                action="{{ route('hapus_alat', $item['id']) }}" method="POST" onsubmit="return confirmDelete('{{ $item['nama'] }}');">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button href="{{ url('/admin/DataAlat/HapusAlat/' . $item['id']) }}"
@@ -107,4 +107,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <script>
+                                        function confirmDelete(namaAlat) {
+                                            return confirm("Apakah Anda yakin ingin menghapus bahan '" + namaAlat + "'?");
+                                        }
+                                    </script>
                                 @endsection

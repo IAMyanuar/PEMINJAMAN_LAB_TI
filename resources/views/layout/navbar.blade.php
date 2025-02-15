@@ -14,7 +14,6 @@
         <!-- ============================================================== -->
         <div class="navbar-brand">
             <!-- Logo icon -->
-            <a href="index.html">
                 <b class="logo-icon">
                     <!-- Dark Logo icon -->
                      <img src="{{ asset('assets/images/poliwangi.png') }}" alt="homepage" class="dark-logo" width="50px" height="40px"/>
@@ -30,7 +29,6 @@
                     <!-- Light Logo text -->
                     <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /> --}}
                 </span>
-            </a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
