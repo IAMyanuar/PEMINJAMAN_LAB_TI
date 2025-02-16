@@ -1,7 +1,7 @@
 @extends('layout.master2')
 
 @section('title')
-    PENGJUAN RUANGAN
+    SI PIRANG | Pengajuan Ruangan
 @stop
 
 @section('css')

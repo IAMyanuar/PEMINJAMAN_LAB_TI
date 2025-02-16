@@ -8,13 +8,14 @@ use App\Http\Controllers\AdminController\PeminjamanController as AdminPeminjaman
 use App\Http\Controllers\AdminController\RiwayatController as AdminRiwayatController;
 use App\Http\Controllers\AdminController\RuanganController as AdminRuanganController;
 use App\Http\Controllers\AdminController\FasilitasController as AdminFasilitasController;
-use App\Http\Controllers\AdminController\PeminjamanAlatDanBahanController;
+use App\Http\Controllers\AdminController\PeminjamanAlatDanBahanController as AdminAlatBahanController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\UserController\DashboardController;
+use App\Http\Controllers\UserController\PeminjamanAlatDanBahanController as UserControllerPeminjamanAlatDanBahanController;
 use App\Http\Controllers\UserController\PeminjamanController;
 use App\Http\Controllers\UserController\RiwayatController;
+use App\Http\Controllers\UserController\PeminjamanAlatDanBahanController;
 use App\Http\Controllers\webAuthController;
-use App\Models\Bahan;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -81,9 +82,9 @@ Route::middleware('checkToken')->group(function () {
     Route::put('/admin/DataBahan/EditBahan/{id}', [BahanController::class, 'update']);
     Route::delete('/admin/DataBahan/HapusBahan/{id}',[BahanController::class,'destroy'])->name('hapus_bahan');
 
-    Route::get('/admin/accpeminjamanAlat&Bahan', [PeminjamanAlatDanBahanController::class,'index']);
-    Route::get('/admin/accpeminjamanAlat&Bahan/{id}', [PeminjamanAlatDanBahanController::class,'detilPeminjamanAlatBahan']);
-    Route::post('/admin/accpeminjamanAlat&Bahan/update-status/{id}', [PeminjamanAlatDanBahanController::class,'ubahstatus'])->name('ubah-status');
+    Route::get('/admin/accpeminjamanAlat&Bahan', [AdminAlatBahanController::class,'index']);
+    Route::get('/admin/accpeminjamanAlat&Bahan/{id}', [AdminAlatBahanController::class,'detilPeminjamanAlatBahan']);
+    Route::post('/admin/accpeminjamanAlat&Bahan/update-status/{id}', [AdminAlatBahanController::class,'ubahstatus'])->name('ubah-status');
 
 
     //user
@@ -98,6 +99,15 @@ Route::middleware('checkToken')->group(function () {
     Route::patch('/PengajuanPeminjaman/{id}', [PeminjamanController::class, 'updateStatus'])->name('ulasan');
     Route::get('/riwayat', [RiwayatController::class, 'riwayatPeminjaman'])->name('riwayatku_search');
     Route::get('/kalender', [DashboardController::class, 'KalenderPeminjaman']);
+
+    //baru
+    Route::get('/PengajuanAlat&Barang',[PeminjamanAlatDanBahanController::class,'index']);
+    Route::get('/PengajuanAlat&Barang/ajukan-alat&bahan',[PeminjamanAlatDanBahanController::class,'create']);
+    Route::post('/PengajuanAlat&Barang/ajukan-alat&bahan',[PeminjamanAlatDanBahanController::class,'store'])->name('ajukan_alat_bahan');
+    Route::delete('/PengajuanAlat&Barang/hapus/{id}',[PeminjamanAlatDanBahanController::class,'destroyPmjAlatBahan'])->name('hapus_pmj_alat_bahan');
+    Route::get('/PengajuanAlat&Barang/{id}', [PeminjamanAlatDanBahanController::class,'detilPeminjamanAlatBahan']);
+    Route::get('/PengajuanAlat&Barang/ubah/{id}', [PeminjamanAlatDanBahanController::class,'edit']);
+    Route::put('/PengajuanAlat&Barang/ubah/{id}', [PeminjamanAlatDanBahanController::class,'update'])->name('ubah_pengajuan_alat_bahan');
 
 
     Route::post('/logout', [webAuthController::class, 'Logout'])->name('logout');

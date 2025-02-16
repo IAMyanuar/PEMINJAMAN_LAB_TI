@@ -1,7 +1,7 @@
 @extends('layout.master2')
 
 @section('title')
-    SI PIRANG | RIWAYAT PEMINJAMAN
+    SI PIRANG | Riwayat Peminjaman
 @stop
 
 @section('css')

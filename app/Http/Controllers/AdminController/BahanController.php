@@ -47,7 +47,6 @@ class BahanController extends Controller
             'jumlah' => 'required',
         ]);
         try {
-            $foto = $request->file('foto');
             $options = [
                 'multipart' => [
                     [

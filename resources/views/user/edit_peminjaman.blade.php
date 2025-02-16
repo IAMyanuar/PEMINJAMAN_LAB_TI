@@ -1,7 +1,7 @@
 @extends('layout.master2')
 
 @section('title')
-    dashboard
+    SI PIRANG | Edit Peminjaman Ruangan
 @stop
 
 @section('css')
@@ -95,6 +95,7 @@
                                                     </div>
                                                 </div>
                                             @endfor
+
                                         </div>
                                         <div class="form-group">
                                             <label>Waktu Mulai</label>

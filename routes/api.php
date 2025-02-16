@@ -8,6 +8,7 @@ use App\Http\Controllers\API\FasilitasController;
 use App\Http\Controllers\API\PeminjamanAlatDanBahanController;
 use App\Http\Controllers\API\RuanganController;
 use App\Http\Controllers\API\PeminjamanController;
+use App\Http\Controllers\UserController\PeminjamanAlatDanBahanController as UserControllerPeminjamanAlatDanBahanController;
 use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Route;
 
@@ -75,9 +76,9 @@ Route::post('bahan-delete/{id}',[BahanController::class, 'destroy'])->middleware
 Route::get('peminjaman-alat-bahan',[PeminjamanAlatDanBahanController::class, 'index']);// menampikan peminjaman alat dan bahan
 Route::get('peminjaman-alat-bahan/inprogress',[PeminjamanAlatDanBahanController::class, 'proses']); //tampil data yang diproses
 Route::get('peminjaman-alat-bahan/{id}',[PeminjamanAlatDanBahanController::class, 'detail']);  //detil
-Route::post('peminjaman-alat-bahan/update-status/{id}',[PeminjamanAlatDanBahanController::class, 'ubahstatus'])->middleware('auth:sanctum','ablity:access-admin');
+Route::post('peminjaman-alat-bahan/update-status/{id}',[PeminjamanAlatDanBahanController::class, 'ubahstatus'])->middleware('auth:sanctum','ablity:access-admin'); //update status
 Route::get('peminjaman-alat-bahan/riwayat',[PeminjamanAlatDanBahanController::class, 'riwayatPmjAlatBahan']);
-Route::get('peminjaman-alat-bahan/user/{id}',[PeminjamanAlatDanBahanController::class, 'PmjAlatBahanByIdUser']);
+
 
 
 //user
@@ -87,6 +88,12 @@ Route::post('EditPeminjaman/{id}',[PeminjamanController::class,'update'])->middl
 Route::post('peminjaman/{id}/feedback',[PeminjamanController::class,'feedback'])->middleware('auth:sanctum','ablity:access-peminjam');//feedback dari user
 Route::get('peminjaman/riwayat/{id}',[PeminjamanController::class, 'riwatyatPeminjamanByUser'])->middleware('auth:sanctum','ablity:access-peminjam');//riwayat peminjaman user
 Route::post('hapus-peminjaman/{id}',[PeminjamanController::class, 'destroy'])->middleware('auth:sanctum','ablity:access-peminjam');//hapus peminjaman
+//baru
+Route::get('peminjaman-alat-bahan/user/{id}',[PeminjamanAlatDanBahanController::class, 'PmjAlatBahanByIdUser']);
+Route::post('peminjaman-alat-bahan',[PeminjamanAlatDanBahanController::class,'store']);
+Route::post('peminjaman-alat-bahan/ubah/{id}',[PeminjamanAlatDanBahanController::class,'update']);
+Route::post('peminjaman-alat-bahan/hapus/{id}',[PeminjamanAlatDanBahanController::class,'destroyPmjAlatBahan']);
+
 
 
 //kalender

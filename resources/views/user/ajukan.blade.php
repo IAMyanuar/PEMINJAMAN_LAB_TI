@@ -1,7 +1,7 @@
 @extends('layout.master2')
 
 @section('title')
-    FORM PEMGAJUAN
+    SI PIRANG |Form Pengajuan Ruangan
 @stop
 
 @section('css')
